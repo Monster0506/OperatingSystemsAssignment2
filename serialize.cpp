@@ -24,6 +24,14 @@ int main(int argc, char* argv[]) {
     for (int j = 0; j < m; j++) {
         f >> total[j];
     }
+    string label;
+    f >> label;
+    vector<vector<int>> alloc(n, vector<int>(m));
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            f >> alloc[i][j];
+        }
+    }
 
     return 0;
 }
