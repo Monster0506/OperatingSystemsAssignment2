@@ -49,5 +49,10 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
+    out.write((char*)(&n), sizeof(int));
+    out.write((char*)(&m), sizeof(int));
+
+    out.write((char*)(total.data()), m * sizeof(int));
+
     return 0;
 }
