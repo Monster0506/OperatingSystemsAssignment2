@@ -33,5 +33,29 @@ int main(int argc, char* argv[]) {
     for (int i = 0; i < n; i++) {
         in.read((char*)(maxm[i].data()), m * sizeof(int));
     }
+
+    cout << "n = " << n << ", m = " << m << endl;
+
+    cout << "Available: ";
+    for (int j = 0; j < m; j++) cout << avail[j] << " ";
+    cout << endl;
+
+    cout << "\nAllocation:" << endl;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            cout << alloc[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    cout << "\nMax:" << endl;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            cout << maxm[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+
     return 0;
 }
