@@ -34,6 +34,8 @@ int main(int argc, char* argv[]) {
         in.read((char*)(maxm[i].data()), m * sizeof(int));
     }
 
+    in.close();
+
     cout << "n = " << n << ", m = " << m << endl;
 
     cout << "Available: ";
