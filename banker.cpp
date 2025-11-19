@@ -23,5 +23,10 @@ int main(int argc, char* argv[]) {
     vector<int> avail(m);
     in.read((char*)(avail.data()), m * sizeof(int));
 
+    vector<vector<int>> alloc(n, vector<int>(m));
+
+    for (int i = 0; i < n; i++) {
+        in.read((char*)(alloc[i].data()), m * sizeof(int));
+    }
     return 0;
 }
