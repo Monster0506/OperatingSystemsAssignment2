@@ -14,14 +14,17 @@
     - [3.1 Serialization](#31-serialization)
     - [3.2 Running the Banker](#32-running-the-banker)
   - [4. Clean Up](#4-clean-up)
-  - [5. Algorithm Overview](#5-algorithm-overview)
-    - [5.1 The Banker's Algorithm](#51-the-bankers-algorithm)
-    - [5.2 Assignment Solution](#52-assignment-solution)
-  - [6. Detailed Code Walkthrough](#6-detailed-code-walkthrough)
-    - [6.1 serialize.cpp](#61-serializecpp)
-    - [6.2 banker.cpp](#62-bankercpp)
-  - [7. Example Output](#7-example-output)
-  - [8. Example Images](#8-example-images)
+  - [5. File Format Specifications](#5-file-format-specifications)
+    - [5.1 Text Input File Format](#51-text-input-file-format)
+    - [5.2 Binary Serialization Format](#52-binary-serialization-format)
+  - [6. Algorithm Overview](#6-algorithm-overview)
+    - [6.1 The Banker's Algorithm](#61-the-bankers-algorithm)
+    - [6.2 Assignment Solution](#62-assignment-solution)
+  - [7. Detailed Code Walkthrough](#7-detailed-code-walkthrough)
+    - [7.1 serialize.cpp](#71-serializecpp)
+    - [7.2 banker.cpp](#72-bankercpp)
+  - [8. Example Output](#8-example-output)
+  - [9. Example Images](#9-example-images)
 
 ## 0. Prerequisites
 
@@ -127,9 +130,112 @@ To remove the compiled executables and object files, run:
 make clean
 ```
 
-## 5. Algorithm Overview
+## 5. File Format Specifications
 
-### 5.1 The Banker's Algorithm
+### 5.1 Text Input File Format
+
+The text input files (located in the `inputs/` directory) follow a specific human-readable format:
+
+```text
+<n> <m>
+<Available[0]> <Available[1]> ... <Available[m-1]>
+Allocation
+<Allocation[0][0]> <Allocation[0][1]> ... <Allocation[0][m-1]>
+<Allocation[1][0]> <Allocation[1][1]> ... <Allocation[1][m-1]>
+...
+<Allocation[n-1][0]> <Allocation[n-1][1]> ... <Allocation[n-1][m-1]>
+Max
+<Max[0][0]> <Max[0][1]> ... <Max[0][m-1]>
+<Max[1][0]> <Max[1][1]> ... <Max[1][m-1]>
+...
+<Max[n-1][0]> <Max[n-1][1]> ... <Max[n-1][m-1]>
+```
+
+**Field Descriptions:**
+
+- **Line 1**: Two integers separated by whitespace
+  - `n`: Number of processes in the system
+  - `m`: Number of resource types
+- **Line 2**: `m` integers separated by whitespace
+  - `Available[j]`: The number of available instances of resource type `j`
+- **Line 3**: The literal string `"Allocation"` (label/header)
+- **Lines 4 to 3+n**: The Allocation matrix (`n` rows, `m` columns)
+  - `Allocation[i][j]`: Number of instances of resource type `j` currently allocated to process `i`
+- **Line 4+n**: The literal string `"Max"` (label/header)
+- **Lines 5+n to 4+2n**: The Max matrix (`n` rows, `m` columns)
+  - `Max[i][j]`: Maximum number of instances of resource type `j` that process `i` may request
+
+**Example (input8.txt):**
+
+```text
+5 3
+3 3 2
+Allocation
+0 1 0
+2 0 0
+3 0 2
+2 2 1
+0 0 2
+Max
+7 5 3
+3 3 2
+9 0 2
+2 2 2
+4 3 3
+```
+
+This represents:
+
+- 5 processes (P0 through P4)
+- 3 resource types (R0, R1, R2)
+- Available resources: 3 of R0, 3 of R1, 2 of R2
+
+### 5.2 Binary Serialization Format
+
+The `serialize` utility converts the text format into a compact binary format for efficient reading by the `banker` program. The binary file has the following structure:
+
+```text
+[Bytes 0-3]     : n (int, 4 bytes) - Number of processes
+[Bytes 4-7]     : m (int, 4 bytes) - Number of resource types
+[Bytes 8 to 8+4m-1] : Available array (m integers, 4 bytes each)
+[Next n*m*4 bytes]  : Allocation matrix (n rows  m columns, row-major order)
+[Next n*m*4 bytes]  : Max matrix (n rows  m columns, row-major order)
+```
+
+**Byte Layout Details:**
+
+1. **Header (8 bytes)**:
+    - Bytes 0-3: `n` as a 4-byte integer (little-endian on most systems)
+    - Bytes 4-7: `m` as a 4-byte integer
+
+2. **Available Vector (4m bytes)**:
+    - Starting at byte 8
+    - Contains `m` integers (4 bytes each)
+    - `Available[0]`, `Available[1]`, ..., `Available[m-1]`
+
+3. **Allocation Matrix (4nm bytes)**:
+    - Starting at byte `8 + 4m`
+    - Contains `n` rows, each with `m` integers (4 bytes each)
+    - Stored in row-major order: `Allocation[0][0]`, `Allocation[0][1]`, ..., `Allocation[0][m-1]`, `Allocation[1][0]`, ...
+
+4. **Max Matrix (4nm bytes)**:
+    - Starting at byte `8 + 4m + 4nm`
+    - Contains `n` rows, each with `m` integers (4 bytes each)
+    - Stored in row-major order: `Max[0][0]`, `Max[0][1]`, ..., `Max[0][m-1]`, `Max[1][0]`, ...
+
+**Total File Size**: `8 + 4m + 4nm + 4nm = 8 + 4m(1 + 2n)` bytes
+
+**Example Calculation for input8.txt** (`n=5`, `m=3`):
+
+- Header: 8 bytes
+- Available: 4  3 = 12 bytes
+- Allocation: 4  5  3 = 60 bytes
+- Max: 4  5  3 = 60 bytes
+- **Total**: 8 + 12 + 60 + 60 = **140 bytes**
+
+## 6. Algorithm Overview
+
+### 6.1 The Banker's Algorithm
 
 The Banker's Algorithm is a resource allocation and deadlock avoidance algorithm. It tests for safety by simulating the allocation for predetermined maximum possible amounts of all resources, then makes an "s-state" check to test for possible activities, before deciding whether allocation should be allowed to continue.
 
@@ -156,15 +262,15 @@ The Banker's Algorithm is a resource allocation and deadlock avoidance algorithm
     - Go to step 2.
 5. If `Finish[i] == true` for all `i`, then the system is in a **Safe State**.
 
-### 5.2 Assignment Solution
+### 6.2 Assignment Solution
 
 Based on the input provided in `inputs/input8.txt` (which corresponds to the assignment problem), the system is in a **SAFE** state.
 
 **Safe Sequence:** `P1 -> P3 -> P4 -> P0 -> P2`
 
-## 6. Detailed Code Walkthrough
+## 7. Detailed Code Walkthrough
 
-### 6.1 serialize.cpp
+### 7.1 serialize.cpp
 
 This utility converts the text input into a binary format.
 
@@ -516,7 +622,7 @@ Exit the program with status code 0 (success).
 
 End of the `main` function.
 
-### 6.2 banker.cpp
+### 7.2 banker.cpp
 
 This file implements the Banker's Algorithm safety check logic.
 
@@ -1072,7 +1178,7 @@ Exit the program with status code 0 (success).
 
 End of the `main` function.
 
-## 7. Example Output
+## 8. Example Output
 
 Running the program with `inputs/input8.txt`:
 
@@ -1103,7 +1209,7 @@ System is in a SAFE state.
 Safe Sequence: P1 -> P3 -> P4 -> P0 -> P2
 ```
 
-## 8. Example Images
+## 9. Example Images
 
 ![Example 1](example1.png)
 
