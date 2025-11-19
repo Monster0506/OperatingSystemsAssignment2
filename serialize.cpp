@@ -43,5 +43,11 @@ int main(int argc, char* argv[]) {
 
     f.close();
 
+    ofstream out(output_file, ios::binary);
+    if (!out.is_open()) {
+        cerr << "Error: could not create " << output_file << endl;
+        return 1;
+    }
+
     return 0;
 }
