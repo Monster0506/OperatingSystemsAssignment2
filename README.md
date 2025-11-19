@@ -23,8 +23,9 @@
   - [7. Detailed Code Walkthrough](#7-detailed-code-walkthrough)
     - [7.1 serialize.cpp](#71-serializecpp)
     - [7.2 banker.cpp](#72-bankercpp)
-  - [8. Example Output](#8-example-output)
-  - [9. Example Images](#9-example-images)
+  - [8. Example Outputs](#8-example-outputs)
+    - [8.1 Example Text Output](#81-example-text-output)
+  - [8.2 Example Images](#82-example-images)
 
 ## 0. Prerequisites
 
@@ -1178,7 +1179,9 @@ Exit the program with status code 0 (success).
 
 End of the `main` function.
 
-## 8. Example Output
+## 8. Example Outputs
+
+### 8.1 Example Text Output
 
 Running the program with `inputs/input8.txt`:
 
@@ -1209,7 +1212,7 @@ System is in a SAFE state.
 Safe Sequence: P1 -> P3 -> P4 -> P0 -> P2
 ```
 
-## 9. Example Images
+## 8.2 Example Images
 
 ![Example 1](example1.png)
 
