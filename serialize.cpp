@@ -33,5 +33,15 @@ int main(int argc, char* argv[]) {
         }
     }
 
+    f >> label;
+    vector<vector<int>> maxm(n, vector<int>(m));
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            f >> maxm[i][j];
+        }
+    }
+
+    f.close();
+
     return 0;
 }
