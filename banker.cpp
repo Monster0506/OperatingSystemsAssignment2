@@ -15,5 +15,9 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
+    int n, m;
+    in.read((char*)(&n), sizeof(int));
+    in.read((char*)(&m), sizeof(int));
+
     return 0;
 }
