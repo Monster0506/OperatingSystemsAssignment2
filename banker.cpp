@@ -90,5 +90,9 @@ int main(int argc, char* argv[]) {
         if (!found) break;
     }
 
+    bool safe = true;
+    for (bool f : finish)
+        if (!f) safe = false;
+
     return 0;
 }
