@@ -1,5 +1,7 @@
 #include <fstream>
 #include <iostream>
+#include <string>
+#include <vector>
 using namespace std;
 
 int main(int argc, char* argv[]) {
@@ -14,6 +16,9 @@ int main(int argc, char* argv[]) {
         cerr << "Error: could not open " << input_file << endl;
         return 1;
     }
+
+    int n, m;
+    f >> n >> m;
 
     return 0;
 }
