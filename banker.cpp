@@ -79,7 +79,12 @@ int main(int argc, char* argv[]) {
                         break;
                     }
                 }
-                // resource release and marking will go here
+                if (canRun) {
+                    for (int j = 0; j < m; j++) avail[j] += alloc[p][j];
+                    finish[p] = true;
+                    safeSeq.push_back(p);
+                    found = true;
+                }
             }
         }
         if (!found) break;
