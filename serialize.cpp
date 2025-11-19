@@ -54,5 +54,14 @@ int main(int argc, char* argv[]) {
 
     out.write((char*)(total.data()), m * sizeof(int));
 
+    for (int i = 0; i < n; i++) {
+        out.write((char*)(alloc[i].data()), m * sizeof(int));
+    }
+
+    for (int i = 0; i < n; i++) {
+        out.write((char*)(maxm[i].data()), m * sizeof(int));
+    }
+
+    out.close();
     return 0;
 }
