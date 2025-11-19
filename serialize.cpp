@@ -63,5 +63,9 @@ int main(int argc, char* argv[]) {
     }
 
     out.close();
+
+    cout << "Serialization successful!" << endl;
+    cout << "Created binary file: " << output_file << endl;
+
     return 0;
 }
