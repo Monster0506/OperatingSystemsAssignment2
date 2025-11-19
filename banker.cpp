@@ -94,5 +94,16 @@ int main(int argc, char* argv[]) {
     for (bool f : finish)
         if (!f) safe = false;
 
+    if (safe) {
+        cout << "System is in a SAFE state.\nSafe Sequence: ";
+        for (size_t i = 0; i < safeSeq.size(); i++) {
+            cout << "P" << safeSeq[i];
+            if (i < safeSeq.size() - 1) cout << " -> ";
+        }
+        cout << endl;
+    } else {
+        cout << "System is NOT in a safe state." << endl;
+    }
+
     return 0;
 }
