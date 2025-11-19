@@ -64,5 +64,15 @@ int main(int argc, char* argv[]) {
             need[i][j] = maxm[i][j] - alloc[i][j];
         }
     }
+
+    vector<bool> finish(n, false);
+    vector<int> safeSeq;
+
+    for (int count = 0; count < n; count++) {
+        bool found = false;
+        // process check loop will go here
+        if (!found) break;
+    }
+
     return 0;
 }
