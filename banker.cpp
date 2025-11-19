@@ -1,5 +1,6 @@
 #include <fstream>
 #include <iostream>
+#include <vector>
 using namespace std;
 
 int main(int argc, char* argv[]) {
@@ -18,6 +19,9 @@ int main(int argc, char* argv[]) {
     int n, m;
     in.read((char*)(&n), sizeof(int));
     in.read((char*)(&m), sizeof(int));
+
+    vector<int> avail(m);
+    in.read((char*)(avail.data()), m * sizeof(int));
 
     return 0;
 }
