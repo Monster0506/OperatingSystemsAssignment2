@@ -20,5 +20,10 @@ int main(int argc, char* argv[]) {
     int n, m;
     f >> n >> m;
 
+    vector<int> total(m);
+    for (int j = 0; j < m; j++) {
+        f >> total[j];
+    }
+
     return 0;
 }
