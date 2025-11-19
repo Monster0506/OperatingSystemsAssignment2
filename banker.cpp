@@ -57,5 +57,12 @@ int main(int argc, char* argv[]) {
     }
     cout << endl;
 
+    vector<vector<int>> need(n, vector<int>(m));
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            need[i][j] = maxm[i][j] - alloc[i][j];
+        }
+    }
     return 0;
 }
