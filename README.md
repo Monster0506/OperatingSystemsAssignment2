@@ -4,6 +4,7 @@
 
 - [Operating Systems Assignment 2](#operating-systems-assignment-2)
   - [Table of Contents](#table-of-contents)
+  - [Changelog](#changelog)
   - [0. Prerequisites](#0-prerequisites)
     - [0.1 Operating System](#01-operating-system)
     - [0.2 Compiler](#02-compiler)
