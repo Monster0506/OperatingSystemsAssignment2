@@ -28,5 +28,10 @@ int main(int argc, char* argv[]) {
     for (int i = 0; i < n; i++) {
         in.read((char*)(alloc[i].data()), m * sizeof(int));
     }
+
+    vector<vector<int>> maxm(n, vector<int>(m));
+    for (int i = 0; i < n; i++) {
+        in.read((char*)(maxm[i].data()), m * sizeof(int));
+    }
     return 0;
 }
