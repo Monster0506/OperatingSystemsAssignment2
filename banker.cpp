@@ -72,23 +72,29 @@ int main(int argc, char* argv[]) {
 
     for (int count = 0; count < n; count++) {
         bool found = false;
+
         for (int p = 0; p < n; p++) {
-            if (!finish[p]) {
-                bool canRun = true;
-                for (int j = 0; j < m; j++) {
-                    if (need[p][j] > avail[j]) {
-                        canRun = false;
-                        break;
-                    }
-                }
-                if (canRun) {
-                    for (int j = 0; j < m; j++) avail[j] += alloc[p][j];
-                    finish[p] = true;
-                    safeSeq.push_back(p);
-                    found = true;
+            if (finish[p]) continue;
+
+            bool canRun = true;
+            for (int j = 0; j < m; j++) {
+                if (need[p][j] > avail[j]) {
+                    canRun = false;
+                    break;
                 }
             }
+
+            if (!canRun) continue;
+
+            for (int j = 0; j < m; j++) {
+                avail[j] += alloc[p][j];
+            }
+
+            finish[p] = true;
+            safeSeq.push_back(p);
+            found = true;
         }
+
         if (!found) break;
     }
 
