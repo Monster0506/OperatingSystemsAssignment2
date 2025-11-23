@@ -78,6 +78,7 @@
 
 `af4fa73` `2025-11-19 00:24` Add text input files (we will need to handle converting these to machine readable)
 `
+
 e9283dd` `2025-11-19 00:15` Whoops I need to close the input file
 
 `0bd144f` `2025-11-19 00:14` Print safe state message and process execution order
