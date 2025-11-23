@@ -341,7 +341,7 @@ The Banker's Algorithm is a resource allocation and deadlock avoidance algorithm
 
 Based on the input provided in `inputs/input8.txt` (which corresponds to the assignment problem), the system is in a **SAFE** state.
 
-**Safe Sequence:** `P1 -> P3 -> P4 -> P0 -> P2`
+**Safe Sequence:** `P3 -> P4 -> P1 -> P2 -> P0`
 
 ## 7. Detailed Code Walkthrough
 
