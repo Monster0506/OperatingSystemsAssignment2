@@ -30,85 +30,85 @@
 
 ## Changelog
 
-f73e5d2 2025-11-22 19:52 Update README with corrected example
+`f73e5d2` `2025-11-22 19:52` Update README with corrected example
 
-c7785d3 2025-11-22 19:51 Update README with corrected output
+`c7785d3` `2025-11-22 19:51` Update README with corrected output
 
-f88dc2b 2025-11-22 19:47 Update inputs/input8.txt to match assignment fully
+`f88dc2b` `2025-11-22 19:47` Update inputs/input8.txt to match assignment fully
 
-d1655aa 2025-11-19 09:56 Add changelog to TOC
+`d1655aa` `2025-11-19 09:56` Add changelog to TOC
 
-cac9df2 2025-11-19 09:55 Add changelog
+`cac9df2` `2025-11-19 09:55` Add changelog
 
-1af4c47 2025-11-19 09:53 Fix section numbering
+`1af4c47` `2025-11-19 09:53` Fix section numbering
 
-35b066c 2025-11-19 09:41 Include binary/input file spec
+`35b066c` `2025-11-19 09:41` Include binary/input file spec
 
-0a4d406 2025-11-19 09:37 Add README.md
+`0a4d406` `2025-11-19 09:37` Add README.md
 
-c143d59 2025-11-19 00:47 Add input 8 from problem in assignment document
+`c143d59` `2025-11-19 00:47` Add input 8 from problem in assignment document
 
-4ac0470 2025-11-19 00:35 Add second example image
+`4ac0470` `2025-11-19 00:35` Add second example image
 
-3c88d75 2025-11-19 00:35 Add first example image
+`3c88d75` `2025-11-19 00:35` Add first example image
 
-24757cd 2025-11-19 00:31 Oh this serialize needs to be in the Makefile
+`24757cd` `2025-11-19 00:31` Oh this serialize needs to be in the Makefile
 
-b4f0e6e 2025-11-19 00:30 Success message!
+`b4f0e6e` `2025-11-19 00:30` Success message!
 
-b8c6830 2025-11-19 00:29 Serialize allocation and max matricies
+`b8c6830` `2025-11-19 00:29` Serialize allocation and max matricies
 
-1b78174 2025-11-19 00:29 Write configuration to binary
+`1b78174` `2025-11-19 00:29` Write configuration to binary
 
-d5dfa6e 2025-11-19 00:28 Open binary output file for serialization
+`d5dfa6e` `2025-11-19 00:28` Open binary output file for serialization
 
-af2e021 2025-11-19 00:28 Read maximum demand matrix
+`af2e021` `2025-11-19 00:28` Read maximum demand matrix
 
-40a9f7d 2025-11-19 00:27 Read allocation matrix
+`40a9f7d` `2025-11-19 00:27` Read allocation matrix
 
-0f5be9a 2025-11-19 00:27 Read total system resources
+`0f5be9a` `2025-11-19 00:27` Read total system resources
 
-9d74b70 2025-11-19 00:25 Read matrix dimensions
+`9d74b70` `2025-11-19 00:25` Read matrix dimensions
 
-35f4d29 2025-11-19 00:25 Open and validate input file stream
+`35f4d29` `2025-11-19 00:25` Open and validate input file stream
 
-e585764 2025-11-19 00:25 Add cmdline parsing for file in/out
+`e585764` `2025-11-19 00:25` Add cmdline parsing for file in/out
 
-36aec66 2025-11-19 00:24 Add serialize handler file
+`36aec66` `2025-11-19 00:24` Add serialize handler file
 
-af4fa73 2025-11-19 00:24 Add text input files (we will need to handle converting these to machine readable)
+`af4fa73` `2025-11-19 00:24` Add text input files (we will need to handle converting these to machine readable)
+`
+e9283dd` `2025-11-19 00:15` Whoops I need to close the input file
 
-e9283dd 2025-11-19 00:15 Whoops I need to close the input file
+`0bd144f` `2025-11-19 00:14` Print safe state message and process execution order
 
-0bd144f 2025-11-19 00:14 Print safe state message and process execution order
+`a543187` `2025-11-19 00:13` Final safety check if all processes have completed successfully
 
-a543187 2025-11-19 00:13 Final safety check if all processes have completed successfully
+`99eb12d` `2025-11-19 00:13` Resource release and safe sequence tracking
 
-99eb12d 2025-11-19 00:13 Resource release and safe sequence tracking
+`01c82c9` `2025-11-19 00:12` Process eligibility logic based on available and needed resources
 
-01c82c9 2025-11-19 00:12 Process eligibility logic based on available and needed resources
+`80b0f72` `2025-11-19 00:11` Outer iteration structure for safe sequence search
 
-80b0f72 2025-11-19 00:11 Outer iteration structure for safe sequence search
+`1588efd` `2025-11-19 00:10` Calculate need matrix
 
-1588efd 2025-11-19 00:10 Calculate need matrix
+`6c2345b` `2025-11-19 00:08` Debug printing
 
-6c2345b 2025-11-19 00:08 Debug printing
+`4527af0` `2025-11-19 00:07` Read maximum from input file
 
-4527af0 2025-11-19 00:07 Read maximum from input file
+`f993e4c` `2025-11-19 00:06` Read allocated array from input file
 
-f993e4c 2025-11-19 00:06 Read allocated array from input file
+`00d59a2` `2025-11-19 00:06` Read available input from file
 
-00d59a2 2025-11-19 00:06 Read available input from file
+`35f6f6b` `2025-11-19 00:05` Read dimensions from input file
 
-35f6f6b 2025-11-19 00:05 Read dimensions from input file
+`b014158` `2025-11-19 00:04` Add basic input file reading
 
-b014158 2025-11-19 00:04 Add basic input file reading
+`625a237` `2025-11-19 00:03` Add Makefile
 
-625a237 2025-11-19 00:03 Add Makefile
+`f1ad76c` `2025-11-19 00:03` Add empty banker.cpp
 
-f1ad76c 2025-11-19 00:03 Add empty banker.cpp
-
-bd10529 2025-11-19 00:02 Initialize repo
+`bd10529` `2025-11-19 00:02` Initialize repo
 
 
 ## 0. Prerequisites
